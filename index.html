@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raditya Danish Pratama - Game Programmer Portfolio</title>
+    
+    <!-- Fonts: Plus Jakarta Sans, Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        },
+                        slateBg: '#f8fafc',
+                        cardBg: '#ffffff',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Floating Anti-Gravity Animation */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
+        }
+        .animate-float {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+
+        /* Pulse Pixel Glow */
+        @keyframes pixelPulse {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        .animate-pixel-glow {
+            animation: pixelPulse 3s ease-in-out infinite;
+        }
+
+        /* Glassmorphism Header */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        /* Card Hover Levitation Effect */
+        .card-hover-effect {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px -8px rgba(14, 165, 233, 0.15);
+        }
+
+        /* Game Button Style */
+        .btn-game-primary {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            box-shadow: 0 6px 0px #0369a1, 0 10px 20px rgba(14, 165, 233, 0.3);
+            transition: all 0.15s ease-in-out;
+        }
+        .btn-game-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0px #0369a1, 0 14px 24px rgba(14, 165, 233, 0.4);
+        }
+        .btn-game-primary:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0px #0369a1, 0 4px 10px rgba(14, 165, 233, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-slateBg text-slate-800 font-sans antialiased selection:bg-brand-100 selection:text-brand-700">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="#hero" class="font-heading font-bold text-xl text-slate-900 flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-brand-500 text-white flex items-center justify-center text-sm shadow-md shadow-brand-500/30">🎮</span>
+                Raditya Danish
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-7 font-medium text-sm text-slate-600">
+                <a href="#hero" class="hover:text-brand-600 transition-colors">Start</a>
+                <a href="#intro" class="hover:text-brand-600 transition-colors">Tentang Saya</a>
+                <a href="#projects" class="hover:text-brand-600 transition-colors">Proyek Game</a>
+                <a href="#education" class="hover:text-brand-600 transition-colors">Pendidikan & Tujuan</a>
+                <a href="#experience" class="hover:text-brand-600 transition-colors">Pengalaman</a>
+            </nav>
+
+            <a href="#contact" class="bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs sm:text-sm px-4 py-2 rounded-xl transition-all shadow-md">
+                Hubungi Saya
+            </a>
+        </div>
+    </header>
+
+    <!-- ================= 1. GAME-STYLE HERO SECTION (CENTERED) ================= -->
+    <section id="hero" class="pt-28 pb-20 px-4 sm:px-6 min-h-[90vh] flex flex-col justify-center items-center text-center relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-slateBg border-b border-slate-200/80">
+        
+        <!-- Subtle Ambient Background Deco -->
+        <div class="absolute top-1/4 left-10 w-64 h-64 bg-brand-100 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-72 h-72 bg-teal-100 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
+            
+            <!-- Game Level Pill Badge -->
+            <div class="inline-flex items-center gap-2 bg-white border border-slate-200 px-4 py-2 rounded-full shadow-sm text-xs font-mono text-slate-700 mb-6">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="font-bold text-brand-600">PLAYER 1:</span> RADITYA DANISH PRATAMA
+                <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded text-[10px] font-semibold border border-slate-200">UNITY & C#</span>
+            </div>
+
+            <!-- Main Big Title -->
+            <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight leading-none mb-6">
+                RADITYA DANISH
+            </h1>
+
+            <!-- Game Call to Action Subtitle / Inviting Text -->
+            <p class="font-heading text-xl sm:text-2xl lg:text-3xl font-bold text-slate-700 max-w-3xl mb-4 leading-snug">
+                Selamat Datang <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-teal-500">Siap Memulai Petualangan & Menjelajahi Logika Gameplay</span>
+            </p>
+
+            <p class="text-slate-600 text-base sm:text-lg max-w-2xl mb-10 leading-relaxed">
+                Mengembangkan mekanik game yang presisi, kalkulasi fisika interaktif, serta integrasi antarmuka untuk pengalaman bermain yang imersif.
+            </p>
+
+            <!-- Centered Game Arcade Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
+                <a href="#projects" class="btn-game-primary text-white font-bold font-heading text-base px-8 py-4 rounded-2xl flex items-center justify-center gap-3 w-full sm:w-auto">
+                    <i class="fa-solid fa-gamepad text-xl"></i>
+                    Project Saya
+                </a>
+
+                <a href="#intro" class="bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-700 font-bold font-heading text-base px-7 py-4 rounded-2xl transition-all shadow-sm flex items-center justify-center gap-2 w-full sm:w-auto">
+                    <i class="fa-solid fa-user text-brand-500"></i>
+                   PROFIL
+                </a>
+            </div>
+
+            <!-- Arcade Controller Widget Deco -->
+            <div class="mt-12 inline-flex items-center gap-6 px-6 py-3 bg-white border border-slate-200 rounded-2xl shadow-sm text-xs font-mono text-slate-500">
+                <div class="flex items-center gap-1.5">
+                    <span class="w-3 h-3 rounded-full bg-rose-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                </div>
+                <span>GAME ENGINE: UNITY & CONSTRUCT</span>
+                <span class="hidden sm:inline">•</span>
+                <span class="hidden sm:inline">STATUS: OPEN FOR JUNIOR GAME DEV</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= 2. HALO SAYA... & FOTO PROFIL SECTION ================= -->
+    <section id="intro" class="py-20 max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Photo Box (Left) -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative w-full max-w-sm">
+                    <!-- Glow Behind Card -->
+                    <div class="absolute -top-4 -left-4 w-full h-full bg-brand-100 rounded-3xl -rotate-2"></div>
+                    
+                    <!-- Profile Card -->
+                    <div class="relative bg-white border border-slate-200 rounded-3xl p-6 shadow-xl card-hover-effect">
+                        <div class="w-full h-80 rounded-2xl bg-gradient-to-tr from-slate-100 to-brand-50 border border-slate-200 flex flex-col items-center justify-center text-slate-400 relative overflow-hidden group">
+                            <!-- Image instruction for user -->
+                            <img src="Radittbgt.png" alt="Raditya Danish" class="w-full h-full object-cover rounded-2xl hidden group-has-[[src]]:block" onerror="this.style.display='none'">
+                            <div class="text-center p-4">
+                                <div class=>
+                                </div>
+                                <span class=>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <h3 class="font-heading font-bold text-slate-900 text-sm">Raditya Danish Pratama</h3>
+                                <p class="text-xs text-brand-600 font-mono">SMK Telkom Malang</p>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-600 text-xs font-mono font-medium border border-emerald-100">
+                                Game Programmer
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- "Halo Saya..." Text & Detail (Right) -->
+            <div class="lg:col-span-7 space-y-6">
+                <div>
+                    <span class="text-brand-600 font-mono text-xs font-bold uppercase tracking-wider">Perkenalan Diri</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">
+                        Halo! Saya <span class="text-brand-600">Raditya Danish Pratama</span> 
+                    </h2>
+                </div>
+
+                <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+                    Saya adalah siswa jurusan <strong class="text-slate-900 font-semibold">Pengembangan Gim di SMK Telkom Malang</strong>. Memiliki passion mendalam dalam pengembangan sistem permainan, logika pergerakan karakter, perhitungan fisika 2D/3D, integrasi antarmuka (UI), serta optimasi kode C# di engine Unity.
+                </p>
+
+                <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                    Saya terbiasa memecahkan masalah logika matematika gim, merancang arsitektur kode berorientasi objek (OOP), serta siap berkolaborasi dalam tim interdisipliner untuk mewujudkan konsep gim yang seru dan responsif.
+                </p>
+
+                <!-- Tools & Skills Pills -->
+                <div class="pt-2 border-t border-slate-200/80">
+                    <h4 class="font-heading text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">Engine & Tools Utama:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-mono font-medium flex items-center gap-1.5">
+                            <i class="fa-brands fa-unity"></i> Unity Engine
+                        </span>
+                        <span class="px-3 py-1.5 rounded-xl bg-purple-50 text-purple-700 border border-purple-200 text-xs font-mono font-medium">
+                            C# Scripting
+                        </span>
+                        <span class="px-3 py-1.5 rounded-xl bg-amber-50 text-amber-700 border border-amber-200 text-xs font-mono font-medium">
+                            Construct
+                        </span>
+                        <span class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 border border-slate-200 text-xs font-mono font-medium">
+                            Roblox Studio
+                        </span>
+                        <span class="px-3 py-1.5 rounded-xl bg-indigo-50 text-indigo-700 border border-indigo-200 text-xs font-mono font-medium">
+                            Visual Studio
+                        </span>
+                        <span class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 border border-slate-200 text-xs font-mono font-medium">
+                            Git / GitHub
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= 3. PROYEK GAME SECTION ================= -->
+    <section id="projects" class="py-20 bg-white border-y border-slate-200/80">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-brand-600 font-mono text-xs font-bold uppercase tracking-wider">Portofolio Karya</span>
+                    <h2 class="font-heading text-3xl font-bold text-slate-900 mt-1">Proyek Game Pilihan</h2>
+                </div>
+                <p class="text-slate-500 text-sm max-w-md mt-2 md:mt-0">Klik pada tombol proyek untuk melihat kontribusi teknis dan fitur game yang saya kembangkan.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Project 1: Roll & Run -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 card-hover-effect flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-video bg-white rounded-xl mb-4 border border-slate-200 flex items-center justify-center text-slate-400 font-mono text-xs">
+                            <i class="fa-solid fa-gamepad text-3xl text-brand-500"></i>
+                        </div>
+                        <span class="text-xs font-mono text-brand-600 font-semibold uppercase">Platformer 2D</span>
+                        <h3 class="font-heading font-bold text-xl text-slate-900 mt-1">Roll & Run</h3>
+                        <p class="text-slate-600 text-sm mt-2 line-clamp-2">Game platformer menantang yang menguji ketangkasan pemain melewati berbagai rintangan hingga garis akhir.</p>
+                    </div>
+                    
+                    <button onclick="openProjectModal('roll-run')" class="mt-6 w-full py-2.5 bg-brand-500 hover:bg-brand-600 text-white font-medium text-sm rounded-xl transition-all shadow-md shadow-brand-500/20 flex items-center justify-center gap-2">
+                        Detail Proyek <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Project 2: Nusa Island -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 card-hover-effect flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-video bg-white rounded-xl mb-4 border border-slate-200 flex items-center justify-center text-slate-400 font-mono text-xs">
+                            <i class="fa-solid fa-map text-3xl text-emerald-500"></i>
+                        </div>
+                        <span class="text-xs font-mono text-emerald-600 font-semibold uppercase">RPG Edukasi</span>
+                        <h3 class="font-heading font-bold text-xl text-slate-900 mt-1">Nusa Island</h3>
+                        <p class="text-slate-600 text-sm mt-2 line-clamp-2">Game edukasi eksplorasi 5 pulau Indonesia untuk mengumpulkan prasasti dan belajar sejarah via museum virtual.</p>
+                    </div>
+
+                    <button onclick="openProjectModal('nusa-island')" class="mt-6 w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-sm rounded-xl transition-all shadow-md shadow-emerald-600/20 flex items-center justify-center gap-2">
+                        Detail Proyek <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Project 3: Nglangut -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 card-hover-effect flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-video bg-white rounded-xl mb-4 border border-slate-200 flex items-center justify-center text-slate-400 font-mono text-xs">
+                            <i class="fa-solid fa-meteor text-3xl text-indigo-500"></i>
+                        </div>
+                        <span class="text-xs font-mono text-indigo-600 font-semibold uppercase">Edukasi Luar Angkasa</span>
+                        <h3 class="font-heading font-bold text-xl text-slate-900 mt-1">Nglangut: Infinite Void</h3>
+                        <p class="text-slate-600 text-sm mt-2 line-clamp-2">Eksplorasi astronomi mengenalkan 8 planet melalui tantangan interaktif dan simulasi tata surya.</p>
+                    </div>
+
+                    <button onclick="openProjectModal('nglangut')" class="mt-6 w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm rounded-xl transition-all shadow-md shadow-indigo-600/20 flex items-center justify-center gap-2">
+                        Detail Proyek <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= 4. PENDIDIKAN & TUJUAN KARIER SECTION ================= -->
+    <section id="education" class="py-20 max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="mb-12">
+            <span class="text-brand-600 font-mono text-xs font-bold uppercase tracking-wider">Latar Belakang & Visi</span>
+            <h2 class="font-heading text-3xl font-bold text-slate-900 mt-1">Pendidikan & Tujuan Karier</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Education Box -->
+            <div class="bg-white border border-slate-200 rounded-3xl p-8 card-hover-effect flex flex-col justify-between shadow-sm">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center mb-6 text-xl border border-brand-100">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="text-xs font-mono text-brand-600 font-bold uppercase">Pendidikan Formal</span>
+                    <h3 class="font-heading font-bold text-2xl text-slate-900 mt-1">SMK Telkom Malang</h3>
+                    <p class="text-slate-500 font-mono text-xs mt-1">Jurusan Pengembangan Gim (2025 – Sekarang)</p>
+                    <p class="text-slate-600 text-sm mt-4 leading-relaxed">
+                        Fokus mempelajari pemrograman gim 2D & 3D, logika struktur data, matematika pemrograman, arsitektur kode C# di Unity, serta kolaborasi alur kerja industri pengembangan gim.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-mono text-slate-500">
+                    <i class="fa-solid fa-location-dot text-brand-500"></i> Malang, Jawa Timur
+                </div>
+            </div>
+
+            <!-- Career Goal Box -->
+            <div class="bg-white border border-slate-200 rounded-3xl p-8 card-hover-effect flex flex-col justify-between shadow-sm">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center mb-6 text-xl border border-teal-100">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <span class="text-xs font-mono text-teal-600 font-bold uppercase">Visi Profesional</span>
+                    <h3 class="font-heading font-bold text-2xl text-slate-900 mt-1">Tujuan Karier</h3>
+                    <p class="text-slate-600 text-sm mt-4 leading-relaxed">
+                        Saya ingin mengawali karier sebagai <strong class="text-slate-900">Game Programmer</strong> profesional, berkontribusi dalam pembuatan gameplay, sistem game, dan mekanik interaktif yang seru. Memiliki motivasi belajar tinggi, mampu bekerja dalam tim, dan siap menghadapi tantangan teknis industri gim.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-mono text-emerald-600 font-semibold">
+                    <i class="fa-solid fa-circle-check"></i> Siap Magang & Kolaborasi Proyek
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= 5. PENGALAMAN SAYA SECTION ================= -->
+    <section id="experience" class="py-20 bg-slate-100/80 border-t border-slate-200/80">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            
+            <div class="mb-12">
+                <span class="text-brand-600 font-mono text-xs font-bold uppercase tracking-wider">Jejak Langkah & Kegiatan</span>
+                <h2 class="font-heading text-3xl font-bold text-slate-900 mt-1">Pengalaman Saya</h2>
+                <p class="text-slate-500 text-sm mt-1">Pengalaman kolaborasi tim, proyek TEFA, pengembangan aplikasi, dan kegiatan ekstrakurikuler.</p>
+            </div>
+
+            <div class="space-y-8">
+
+                <!-- Activity 1: TEFA MyEdotel.id -->
+                <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                    <div class="lg:col-span-7 space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-md bg-brand-50 text-brand-600 text-xs font-mono font-bold border border-brand-100">2026</span>
+                            <span class="text-xs text-slate-400 font-mono">Teaching Factory (TEFA)</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-900">TEFA – Virtual Tour MyEdotel.id</h3>
+                        <p class="text-brand-600 font-medium text-sm">Editor Foto 360°</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Berkolaborasi dalam pengembangan fitur Virtual Tour MyEdotel.id dengan mengedit dan mengolah hasil foto 360° agar siap digunakan dan diintegrasikan pada platform web interaktif.
+                        </p>
+                    </div>
+                    
+                    <!-- Photo Slots -->
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-3">
+                        <div class="aspect-video rounded-2xl bg-slate-100 border border-slate-200 flex flex-col items-center justify-center p-2 text-center group">
+                            <i class="fa-solid fa-camera-retro text-slate-400 mb-1 group-hover:text-brand-500 transition-colors"></i>
+                            <span class="text-[10px] text-slate-500 font-mono">Dokumentasi TEFA 1</span>
+                            <span class="text-[9px] text-slate-400 font-mono">(assets/tefa-1.jpg)</span>
+                        </div>
+                        <div class="aspect-video rounded-2xl bg-slate-100 border border-slate-200 flex flex-col items-center justify-center p-2 text-center group">
+                            <i class="fa-solid fa-vr-cardboard text-slate-400 mb-1 group-hover:text-brand-500 transition-colors"></i>
+                            <span class="text-[10px] text-slate-500 font-mono">Hasil Virtual Tour 360</span>
+                            <span class="text-[9px] text-slate-400 font-mono">(assets/tefa-2.jpg)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity 2: MIC - EduRelief -->
+                <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                    <div class="lg:col-span-7 space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-md bg-purple-50 text-purple-600 text-xs font-mono font-bold border border-purple-100">2025</span>
+                            <span class="text-xs text-slate-400 font-mono">MIC Project</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-900">MIC – EduRelief (Aplikasi Konseling AI)</h3>
+                        <p class="text-purple-600 font-medium text-sm">UI/UX & App Flow Contributor</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Berkontribusi dalam penyusunan ide, perancangan alur aplikasi, serta pembuatan desain antarmuka menggunakan Figma untuk aplikasi konseling berbasis AI yang membantu pelajar menjaga kesehatan mental.
+                        </p>
+                    </div>
+
+                    <!-- Photo Slots -->
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-3">
+                        <div class="aspect-video rounded-2xl bg-slate-100 border border-slate-200 flex flex-col items-center justify-center p-2 text-center group">
+                            <i class="fa-brands fa-figma text-slate-400 mb-1 group-hover:text-purple-500 transition-colors"></i>
+                            <span class="text-[10px] text-slate-500 font-mono">Mockup UI Figma</span>
+                            <span class="text-[9px] text-slate-400 font-mono">(assets/edurelief-1.jpg)</span>
+                        </div>
+                        <div class="aspect-video rounded-2xl bg-slate-100 border border-slate-200 flex flex-col items-center justify-center p-2 text-center group">
+                            <i class="fa-solid fa-users text-slate-400 mb-1 group-hover:text-purple-500 transition-colors"></i>
+                            <span class="text-[10px] text-slate-500 font-mono">Foto Diskusi Tim</span>
+                            <span class="text-[9px] text-slate-400 font-mono">(assets/edurelief-2.jpg)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity 3: METIC -->
+                <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                    <div class="lg:col-span-7 space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-md bg-rose-50 text-rose-600 text-xs font-mono font-bold border border-rose-100">2025</span>
+                            <span class="text-xs text-slate-400 font-mono">Ekstrakurikuler METIC</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-900">METIC (Moklet Education of Tech & Informatic)</h3>
+                        <p class="text-rose-600 font-medium text-sm">Video Editor & Videographer</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Mengedit video pendek untuk konten media sosial (Instagram Reels) serta berpartisipasi sebagai videografer pada perayaan Dies Natalis ke-33 SMK Telkom Malang.
+                        </p>
+                    </div>
+
+                    <!-- Photo Slots -->
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-3">
+                        <div class="aspect-video rounded-2xl bg-slate-100 border border-slate-200 flex flex-col items-center justify-center p-2 text-center group">
+                            <i class="fa-solid fa-video text-slate-400 mb-1 group-hover:text-rose-500 transition-colors"></i>
+                            <span class="text-[10px] text-slate-500 font-mono">Dokumentasi Liputan</span>
+                            <span class="text-[9px] text-slate-400 font-mono">(assets/metic-1.jpg)</span>
+                        </div>
+                        <div class="aspect-video rounded-2xl bg-slate-100 border border-slate-200 flex flex-col items-center justify-center p-2 text-center group">
+                            <i class="fa-solid fa-film text-slate-400 mb-1 group-hover:text-rose-500 transition-colors"></i>
+                            <span class="text-[10px] text-slate-500 font-mono">Dies Natalis Ke-33</span>
+                            <span class="text-[9px] text-slate-400 font-mono">(assets/metic-2.jpg)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= 6. FOOTER / KONTAK ================= -->
+    <footer id="contact" class="bg-slate-900 text-white py-16 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+            
+            <h2 class="font-heading text-3xl font-bold mb-3">Mari Terhubung & Berkolaborasi!</h2>
+            <p class="text-slate-400 text-sm max-w-md mx-auto mb-8">Terbuka untuk kesempatan magang, proyek kolaborasi gim, maupun diskusi teknis pemrograman.</p>
+
+            <!-- Social Pill Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <a href="mailto:email@example.com" class="bg-slate-800 hover:bg-brand-500 text-slate-200 hover:text-white px-5 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 border border-slate-700">
+                    <i class="fa-solid fa-envelope"></i> Email
+                </a>
+                <a href="https://github.com" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-5 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 border border-slate-700">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="bg-slate-800 hover:bg-blue-600 text-slate-200 hover:text-white px-5 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 border border-slate-700">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://wa.me/" target="_blank" class="bg-slate-800 hover:bg-emerald-600 text-slate-200 hover:text-white px-5 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 border border-slate-700">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800 text-slate-500 text-xs font-mono">
+                &copy; 2026 Raditya Danish Pratama. Game Programmer Portfolio.
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ================= PROJECT MODAL POPUP ================= -->
+    <div id="projectModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white border border-slate-200 rounded-3xl max-w-2xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto shadow-2xl relative">
+            <button onclick="closeProjectModal()" class="absolute top-6 right-6 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div id="modalContent">
+                <!-- Modal content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Vanilla JS for Modal Dialog -->
+    <script>
+        const projectData = {
+            'roll-run': {
+                title: 'Roll & Run',
+                genre: 'Platformer 2D',
+                desc: 'Game platformer menantang yang menguji ketangkasan pemain melewati berbagai rintangan hingga mencapai garis akhir.',
+                contributions: [
+                    'Mengembangkan gameplay utama dan kontrol karakter berbasis fisika 2D.',
+                    'Membuat sistem pergerakan velocity, jump buffering, dan coyote time.',
+                    'Mengimplementasikan deteksi collision dan checkpoint save system.',
+                    'Melakukan debugging, profiling, dan bug fixing.'
+                ]
+            },
+            'nusa-island': {
+                title: 'Nusa Island',
+                genre: 'RPG Edukasi',
+                desc: 'Game edukasi yang mengajak pemain menjelajahi lima pulau di Indonesia untuk mengumpulkan prasasti dan mempelajari sejarah melalui museum virtual.',
+                contributions: [
+                    'Mengembangkan Quest System berbasis event dan ScriptableObjects.',
+                    'Membuat sistem Chest unlock dan Quiz interaktif.',
+                    'Mengimplementasikan Discovery UI dan Notifikasi area.',
+                    'Membuat sistem perpindahan level dan mengoptimalkan performa.'
+                ]
+            },
+            'nglangut': {
+                title: 'Nglangut: The Infinite Void',
+                genre: 'Edukasi Luar Angkasa',
+                desc: 'Game edukasi bertema luar angkasa yang mengenalkan delapan planet melalui eksplorasi dan tantangan interaktif.',
+                contributions: [
+                    'Mengembangkan alur gameplay utama dan simulasi rotasi planet.',
+                    'Membuat sistem level dan unlock pemicu tantangan.',
+                    'Mengimplementasikan antarmuka (UI) HUD inspeksi planet.',
+                    'Melakukan pengujian (testing) dan perbaikan bug.'
+                ]
+            }
+        };
+
+        function openProjectModal(key) {
+            const data = projectData[key];
+            if(!data) return;
+
+            const html = `
+                <span class="text-xs font-mono text-brand-600 font-bold uppercase">${data.genre}</span>
+                <h2 class="font-heading font-bold text-2xl text-slate-900 mt-1 mb-3">${data.title}</h2>
+                <p class="text-slate-600 text-sm leading-relaxed mb-6">${data.desc}</p>
+
+                <h4 class="font-heading font-bold text-sm text-slate-900 mb-3">Kontribusi Teknis Saya:</h4>
+                <ul class="space-y-2 mb-6">
+                    ${data.contributions.map(item => `
+                        <li class="flex items-start gap-2 text-sm text-slate-600">
+                            <i class="fa-solid fa-check text-brand-500 mt-1 text-xs"></i>
+                            <span>${item}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+
+                <h4 class="font-heading font-bold text-sm text-slate-900 mb-3">Tangkapan Layar (Gallery):</h4>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="aspect-video bg-slate-100 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 text-xs font-mono">Screenshot 1</div>
+                    <div class="aspect-video bg-slate-100 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 text-xs font-mono">Screenshot 2</div>
+                </div>
+            `;
+
+            document.getElementById('modalContent').innerHTML = html;
+            document.getElementById('projectModal').classList.remove('hidden');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html> 
